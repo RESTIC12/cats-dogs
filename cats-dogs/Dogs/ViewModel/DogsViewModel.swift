@@ -10,26 +10,20 @@ import Foundation
 final class DogsViewModel: ObservableObject {
     @Published var dogs: Dogs?
 
+    func performAPICall() async throws -> Dogs {
+        let url = URL(string: "https://dog.ceo/api/breeds/image/random/10")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let wrapper = try JSONDecoder().decode(Dogs.self, from: data)
+        return wrapper
+    }
+
     func fetch() {
-        guard let url = URL(string: "https://dog.ceo/api/breeds/image/random/10") else {
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-
+        Task {
             do {
-                let parsed = try JSONDecoder().decode(Dogs.self, from: data)
-                print(parsed)
-                DispatchQueue.main.async {
-                    self?.dogs = parsed
-                }
+                dogs = try await performAPICall()
             } catch {
-                print(error)
+                dogs = nil
             }
-
-        }.resume()
+        }
     }
 }
