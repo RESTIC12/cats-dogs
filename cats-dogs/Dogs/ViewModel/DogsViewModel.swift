@@ -23,6 +23,9 @@ final class DogsViewModel: ObservableObject {
             do {
                 let parsed = try JSONDecoder().decode(Dogs.self, from: data)
                 print(parsed)
+                DispatchQueue.main.async {
+                    self?.dogs = parsed
+                }
             } catch {
                 print(error)
             }
