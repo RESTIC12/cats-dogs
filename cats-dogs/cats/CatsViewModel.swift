@@ -31,9 +31,9 @@ class CatViewModel: ObservableObject {
                 let cats = try
                 JSONDecoder().decode([Cat].self,
                                      from: data)
-//                DispatchQueue.main.async {
-//                    self?.cats = cats
-//                }
+                DispatchQueue.main.async {
+                    self?.cats = cats
+                }
                 print(cats)
             }
             catch {
