@@ -15,6 +15,8 @@
 		7AC894882C2CC7E900A72FE8 /* DogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC894872C2CC7E900A72FE8 /* DogsViewModel.swift */; };
 		D89C901C2C2E172600A19D4A /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C901B2C2E172600A19D4A /* CatsViewModel.swift */; };
 		D89C901F2C2E25F900A19D4A /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C901E2C2E25F900A19D4A /* CatsView.swift */; };
+		7AC8948A2C2CC94A00A72FE8 /* DogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC894892C2CC94A00A72FE8 /* DogsView.swift */; };
+		D89C901C2C2E172600A19D4A /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C901B2C2E172600A19D4A /* CatsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7AC894872C2CC7E900A72FE8 /* DogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsViewModel.swift; sourceTree = "<group>"; };
 		D89C901B2C2E172600A19D4A /* CatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
 		D89C901E2C2E25F900A19D4A /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
+		7AC894892C2CC94A00A72FE8 /* DogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsView.swift; sourceTree = "<group>"; };
+		D89C901B2C2E172600A19D4A /* CatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,19 +83,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		7AC894822C2CC72200A72FE8 /* DogsNetwork */ = {
+		7AC894822C2CC72200A72FE8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				7AC894832C2CC75D00A72FE8 /* Dogs.swift */,
 			);
-			path = DogsNetwork;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		7AC894852C2CC7CB00A72FE8 /* Dogs */ = {
 			isa = PBXGroup;
 			children = (
+				7AE1B3C82C2E1AD100BD561F /* View */,
 				7AC894862C2CC7DA00A72FE8 /* ViewModel */,
-				7AC894822C2CC72200A72FE8 /* DogsNetwork */,
+				7AC894822C2CC72200A72FE8 /* Entity */,
 			);
 			path = Dogs;
 			sourceTree = "<group>";
@@ -111,6 +116,14 @@
 				D89C901E2C2E25F900A19D4A /* CatsView.swift */,
 			);
 			path = cats;
+			sourceTree = "<group>";
+		};
+		7AE1B3C82C2E1AD100BD561F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7AC894892C2CC94A00A72FE8 /* DogsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
