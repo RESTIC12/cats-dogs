@@ -21,7 +21,7 @@ final class DogsViewModel: ObservableObject {
     }
 
     func fetch() {
-        Task {
+        Task { @MainActor in 
             do {
                 dogs = try await performAPICall()
             } catch {

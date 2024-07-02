@@ -9,17 +9,17 @@ import SwiftUI
 
 struct DogsView: View {
     @StateObject var viewModel = DogsViewModel()
-
+    
     let columns = [
-        GridItem(.adaptive(minimum: 100, maximum: 200)),
-        GridItem(.adaptive(minimum: 100, maximum: 200))
+        GridItem(.adaptive(minimum: 200, maximum: 200)),
+        GridItem(.adaptive(minimum: 200, maximum: 200))
     ]
-
+    
     var body: some View {
-        ScrollView(.vertical) {
-            if let dogs = viewModel.dogs {
-                LazyVGrid(columns: columns, spacing: 10) {
-                    Section(header: Text("Dogs")) {
+        NavigationStack {
+            ScrollView(.vertical) {
+                if let dogs = viewModel.dogs {
+                    LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(dogs.message, id: \.self) { element in
                             AsyncImage(url: URL(string: element)) { result in
                                 result.image?
@@ -29,12 +29,24 @@ struct DogsView: View {
                             .cornerRadius(8)
                         }
                     }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
                 }
-                .padding(.horizontal, 8)
             }
-        }
-        .onAppear() {
-            viewModel.fetch()
+            .onAppear() {
+                viewModel.fetch()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.fetch()
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                    }
+
+                }
+            }
+            .navigationTitle("Dogs")
         }
     }
 }
