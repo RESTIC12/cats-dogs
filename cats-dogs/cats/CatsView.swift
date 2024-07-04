@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct CatsView: View {
+    
     @StateObject var viewModel = CatViewModel()
         
 
@@ -27,7 +29,9 @@ struct CatsView: View {
                 spacing: 10,
                 pinnedViews: [],
                 content: {
-                    Section(header: Text("Cats")) {
+                    Section(header: Text("Cats")
+                        .bold()
+                    ) {
                         ForEach(viewModel.cats, id: \.self) { cat in
                             
                             AsyncImage(url: URL(string: cat.url)!) { result in
@@ -37,9 +41,9 @@ struct CatsView: View {
                                                     }
                                                     .cornerRadius(8)
                             
-                            
                         }
                     }
+                
                 }
             )
             
@@ -47,12 +51,23 @@ struct CatsView: View {
         .onAppear() {
             viewModel.fetch()
         
+        } .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.fetch()
+                } label: {
+                    Image(systemName: "arrow.counterclockwise")
+                }
+
+            }
         }
+        
+        .navigationTitle("Gatos")
 
         }
+    
+    
     }
-
-
 
 
 #Preview {
