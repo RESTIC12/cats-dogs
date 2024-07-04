@@ -11,46 +11,39 @@ import SwiftUI
 struct CatsView: View {
     
     @StateObject var viewModel = CatViewModel()
-        
-
+    
+    
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 6, alignment: nil),
         GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 6, alignment: nil),
-
+        
     ]
-
+    
     var body: some View {
-        
-        
         ScrollView {
-            
             LazyVGrid(
                 columns: columns,
                 spacing: 10,
                 pinnedViews: [],
                 content: {
-                    Section(header: Text("Cats")
-                        .bold()
-                    ) {
-                        ForEach(viewModel.cats, id: \.self) { cat in
-                            
-                            AsyncImage(url: URL(string: cat.url)!) { result in
-                                                        result.image?
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                    }
-                                                    .cornerRadius(8)
-                            
+                    ForEach(viewModel.cats, id: \.self) { cat in
+                        AsyncImage(url: URL(string: cat.url)!) { result in
+                            result
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            ProgressView().progressViewStyle(.circular)
                         }
+                        .cornerRadius(8)
                     }
-                
                 }
             )
+            .padding(.horizontal, 8)
+            .padding(.vertical, 8)
             
         }
         .onAppear() {
             viewModel.fetch()
-        
         } .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -58,16 +51,12 @@ struct CatsView: View {
                 } label: {
                     Image(systemName: "arrow.counterclockwise")
                 }
-
+                
             }
         }
-        
         .navigationTitle("Gatos")
-
-        }
-    
-    
     }
+}
 
 
 #Preview {

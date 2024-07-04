@@ -16,37 +16,38 @@ struct DogsView: View {
     ]
     
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical) {
-                if let dogs = viewModel.dogs {
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(dogs.message, id: \.self) { element in
-                            AsyncImage(url: URL(string: element)) { result in
-                                result.image?
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                            .cornerRadius(8)
+        
+        ScrollView(.vertical) {
+            if let dogs = viewModel.dogs {
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(dogs.message, id: \.self) { element in
+                        AsyncImage(url: URL(string: element)) { result in
+                            result
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            ProgressView().progressViewStyle(.circular)
                         }
+                        .cornerRadius(8)
                     }
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 8)
                 }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 8)
             }
-            .onAppear() {
-                viewModel.fetch()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        viewModel.fetch()
-                    } label: {
-                        Image(systemName: "arrow.counterclockwise")
-                    }
-
+        }
+        .navigationTitle("Cachorros")
+        .onAppear() {
+            viewModel.fetch()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.fetch()
+                } label: {
+                    Image(systemName: "arrow.counterclockwise")
                 }
+                
             }
-            .navigationTitle("Dogs")
         }
     }
 }
