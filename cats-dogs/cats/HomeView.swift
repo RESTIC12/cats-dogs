@@ -8,34 +8,47 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    let widthValue = (UIScreen.main.bounds.width * 0.5) + 10
 
     var body: some View {
-        NavigationView {
-            VStack {
-                NavigationLink(destination: CatsView()) {
-                    Text("Ver gatos")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .padding()
-                        .cornerRadius(10)
-                        
-                        
-                }
-                .padding()
-                
-                NavigationLink(destination: DogsView()) {
-                    Text("Ver cachorrinhos")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .padding()
-                        .cornerRadius(10)
+        ZStack {
+            NavigationView {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Image(systemName: "cat.fill")
+                        Image(systemName: "dog.fill")
+                            .scaleEffect(x: -1, y: 1)
+                    }
+                    .padding(.bottom, 10)
+                    Text("Selecione quais animais fofinhos você deseja visualizar")
+                        .foregroundStyle(.black)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 10)
                     
+                    NavigationLink(destination: CatsView()) {
+                        Text("Ver gatos")
+                            .frame(width: widthValue, height: 30)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .cornerRadius(8)
+                    }
+                    .padding(.bottom, 5)
+                    
+                    NavigationLink(destination: DogsView()) {
+                        Text("Ver cachorrinhos")
+                            .frame(width: widthValue, height: 30)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .cornerRadius(8)
+                    }
+                    Spacer()
                 }
-                .padding()
             }
-            .navigationTitle("Main screen")
         }
     }
 }
