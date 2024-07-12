@@ -14,9 +14,8 @@ struct CatsView: View {
     
     
     let columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 6, alignment: nil),
-        GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 6, alignment: nil),
-        
+        GridItem(.adaptive(minimum: 200, maximum: 800), alignment: nil),
+        GridItem(.adaptive(minimum: 200, maximum: 800), alignment: nil)
     ]
     
     var body: some View {

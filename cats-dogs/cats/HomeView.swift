@@ -27,7 +27,7 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 10)
-                    
+
                     NavigationLink(destination: CatsView()) {
                         Text("Ver gatos")
                             .frame(width: widthValue, height: 30)
@@ -46,6 +46,7 @@ struct HomeView: View {
                             .background(.blue)
                             .cornerRadius(8)
                     }
+                    .padding(.bottom, 20)
                     Spacer()
                 }
             }

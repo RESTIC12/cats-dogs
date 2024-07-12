@@ -11,8 +11,8 @@ struct DogsView: View {
     @StateObject var viewModel = DogsViewModel()
     
     let columns = [
-        GridItem(.adaptive(minimum: 200, maximum: 200)),
-        GridItem(.adaptive(minimum: 200, maximum: 200))
+        GridItem(.adaptive(minimum: 200, maximum: 800)),
+        GridItem(.adaptive(minimum: 200, maximum: 800))
     ]
     
     var body: some View {
